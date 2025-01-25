@@ -8,14 +8,20 @@
 
     require '../controllers/CLientController.php';
     require '../controllers/RendezVousController.php';
+    
+    $database = new Database();
+    $connexion = $database->getConnexion();
+    $cl = new ClientController();
+    $rv = new RendezVousController();
+    $modelClient = new Client();
 
     if (isset($_GET['page'])) {
         if($_GET['page'] == 'client'){
-            Client();
+            $cl->Client();
         }
 
         if($_GET['page'] == 'rendezvous'){
-            RendezVous();
+            $rv->RendezVous();
         }
     }else{
         ?>

@@ -1,27 +1,27 @@
 <?php
-
+    $rv= new RendezVousController();
     if(isset($_GET['action'])){
         if($_GET['page'] == 'rendezvous' && $_GET['action'] == 'addRendezVous'){
-            addRendezVous();
+            $rv->addRendezVous();
         }
 
         if($_GET['page'] == 'rendezvous' && $_GET['action'] == 'editRendezVous'){
-            editRendezVous();
+            $rv->editRendezVous();
         }
 
         if($_GET['page'] == 'rendezvous' && $_GET['action'] == 'saveRendezVous'){
-            storeRendezVous();
+            $rv->storeRendezVous();
         }
 
         if($_GET['page'] == 'rendezvous' && $_GET['action'] == 'updateRendezVous'){
-            updateRendezVouss();
+            $rv->updateRendezVouss();
         }
 
         if($_GET['page'] == 'rendezvous' && $_GET['action'] == 'deleteRendezVous'){
-            deleteRendezVouss();
+            $rv->deleteRendezVouss();
         }
     }else{
-        indexRendezVous();
+        $rv->indexRendezVous();
     }
 
 ?>

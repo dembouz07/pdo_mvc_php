@@ -1,37 +1,50 @@
 <?php
+class ClientController
+{
 
-function Client(){
-    require '../views/clients/index.php';
-}
+    public function Client(){
+        require '../views/clients/index.php';
+    }
+    
+    public function indexClient(){
+        global $modelClient;
+        
+        $clients = $modelClient->getAllClients();
+        require '../views/clients/show.php';
+    }
+    
+    public function addClient(){
+        require '../views/clients/create.php';
+    }
+    
+    public function storeClient(){
+        global $modelClient;
 
-function indexClient(){
-    $clients = getAllClients();
-    require '../views/clients/show.php';
-}
+        extract($_POST);
+        $modelClient->insertClient($nom, $prenom, $email, $telephone);
+        header("location:index.php?page=client");
+    }
+    
+    public function editClient(){
+        global $modelClient;
 
-function addClient(){
-    require '../views/clients/create.php';
-}
+        $result = $modelClient->getClientById($_GET['id']);
+        $client = $result->fetch(2);
+        require '../views/clients/edit.php';
+    }
+    
+    public function updateClients(){
+        global $modelClient;
 
-function storeClient(){
-    extract($_POST);
-    insertClient($nom, $prenom, $email, $telephone);
-    header("location:index.php?page=client");
-}
+        extract($_POST);
+        $modelClient->updateClient($id, $nom, $prenom, $email, $telephone);
+        header("location:index.php?page=client");
+    }
+    
+    public function deleteClients(){
+        global $modelClient;
 
-function editClient(){
-    $result = getClientById($_GET['id']);
-    $client = $result->fetch(2);
-    require '../views/clients/edit.php';
-}
-
-function updateClients(){
-    extract($_POST);
-    updateClient($id, $nom, $prenom, $email, $telephone);
-    header("location:index.php?page=client");
-}
-
-function deleteClients(){
-    deleteClient($_GET['id']);
-    header("location:index.php?page=client");
+        $modelClient->deleteClient($_GET['id']);
+        header("location:index.php?page=client");
+    }
 }

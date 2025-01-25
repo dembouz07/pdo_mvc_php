@@ -1,27 +1,27 @@
 <?php
-
+    $cl = new ClientController();
     if(isset($_GET['action'])){
         if($_GET['page'] == 'client' && $_GET['action'] == 'addClient'){
-            addClient();
+            $cl->addClient();
         }
 
         if($_GET['page'] == 'client' && $_GET['action'] == 'editClient'){
-            editClient();
+            $cl->editClient();
         }
 
         if($_GET['page'] == 'client' && $_GET['action'] == 'saveClient'){
-            storeClient();
+            $cl->storeClient();
         }
 
         if($_GET['page'] == 'client' && $_GET['action'] == 'updateClient'){
-            updateClients();
+            $cl->updateClients();
         }
 
         if($_GET['page'] == 'client' && $_GET['action'] == 'deleteClient'){
-            deleteClients();
+            $cl->deleteClients();
         }
     }else{
-        indexClient();
+        $cl->indexClient();
     }
 
 ?>
