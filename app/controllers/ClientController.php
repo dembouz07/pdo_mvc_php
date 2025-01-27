@@ -3,18 +3,18 @@ class ClientController
 {
 
     public function Client(){
-        require '../views/clients/index.php';
+        require '../app/views/clients/index.php';
     }
     
     public function indexClient(){
         global $modelClient;
         
         $clients = $modelClient->getAllClients();
-        require '../views/clients/show.php';
+        require '../app/views/clients/show.php';
     }
     
     public function addClient(){
-        require '../views/clients/create.php';
+        require '../app/views/clients/create.php';
     }
     
     public function storeClient(){
@@ -30,7 +30,7 @@ class ClientController
 
         $result = $modelClient->getClientById($_GET['id']);
         $client = $result->fetch(2);
-        require '../views/clients/edit.php';
+        require '../app/views/clients/edit.php';
     }
     
     public function updateClients(){

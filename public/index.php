@@ -2,18 +2,19 @@
 <a href="index.php?page=client">Client</a>
 <a href="index.php?page=rendezvous">Rendez-Vous</a>
 <?php
-    require '../models/database.php';
-    require '../models/Client.php';
-    require '../models/RendezVous.php';
+    require '../app/models/database.php';
+    require '../app/models/Client.php';
+    require '../app/models/RendezVous.php';
 
-    require '../controllers/CLientController.php';
-    require '../controllers/RendezVousController.php';
+    require '../app/controllers/CLientController.php';
+    require '../app/controllers/RendezVousController.php';
     
     $database = new Database();
     $connexion = $database->getConnexion();
     $cl = new ClientController();
     $rv = new RendezVousController();
     $modelClient = new Client();
+    $modelRv = new RendezVous();
 
     if (isset($_GET['page'])) {
         if($_GET['page'] == 'client'){
